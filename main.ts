@@ -1,4 +1,10 @@
-input.onButtonEvent(Button.A, input.buttonEventClick(), function on_button_a() {
+input.onPinTouchEvent(TouchPin.P1, input.buttonEventDown(), function () {
+    basic.showString("hi!")
+})
+input.onLogoEvent(TouchButtonEvent.Touched, function () {
+    music.playMelody("C D E F G A B C5 ", 120)
+})
+input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     music.setTempo(32)
     music.play(music.tonePlayable(220, music.beat(BeatFraction.Quarter)), music.PlaybackMode.UntilDone)
     music.rest(music.beat(BeatFraction.Sixteenth))
@@ -24,13 +30,83 @@ input.onButtonEvent(Button.A, input.buttonEventClick(), function on_button_a() {
     music.rest(music.beat(BeatFraction.Sixteenth))
     music.play(music.tonePlayable(330, music.beat(BeatFraction.Quarter)), music.PlaybackMode.UntilDone)
 })
-input.onButtonEvent(Button.B, input.buttonEventClick(), function on_button_b() {
-    music.play(music.stringPlayable("A - - - - - - - ", 120), music.PlaybackMode.UntilDone)
-    basic.pause(10)
-    music.play(music.stringPlayable("A - - - - - - - ", 120), music.PlaybackMode.UntilDone)
-    basic.pause(10)
+input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
+    basic.showLeds(`
+        # . # . #
+        # # # # #
+        # # # # #
+        # # # # #
+        . # . # .
+        `)
+    basic.showLeds(`
+        # # # # #
+        # # # # #
+        # # # # #
+        . # . # .
+        . . . . .
+        `)
+    basic.showLeds(`
+        # # # # #
+        # # # # #
+        . # . # .
+        . . . . .
+        . . . . .
+        `)
+    basic.showLeds(`
+        # # # # #
+        . # . # .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+    basic.showLeds(`
+        . # . # .
+        # . # . #
+        . # . # .
+        . . . . .
+        # . # . #
+        `)
+    basic.showLeds(`
+        . # . # .
+        # . # . #
+        . # . # .
+        # . # . #
+        # # # # #
+        `)
+    basic.showLeds(`
+        # . # . #
+        . # . # .
+        # . # . #
+        # # # # #
+        # # # # #
+        `)
+    basic.showLeds(`
+        . # . # .
+        # . # . #
+        # # # # #
+        # # # # #
+        # # # # #
+        `)
+    basic.showLeds(`
+        # . # . #
+        # # # # #
+        # # # # #
+        # # # # #
+        . # . # .
+        `)
 })
-basic.forever(function on_forever() {
+input.onPinTouchEvent(TouchPin.P0, input.buttonEventDown(), function () {
+    music.playMelody("C5 B A G F E D C ", 120)
+    music.playMelody("C D E F G A B C5 ", 120)
+})
+basic.forever(function () {
     basic.setLedColors(0x0000ff, 0x000000, 0x000000)
     basic.pause(500)
     basic.setLedColors(0x000000, 0x000000, 0x0000ff)
